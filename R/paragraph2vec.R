@@ -101,10 +101,10 @@ paragraph2vec <- function(x,
   }else{
     stopifnot(is.data.frame(x) && all(c("doc_id", "text") %in% colnames(x)))
     nwords      <- txt_count_words(x$text, pattern = "[ \t]")
-    idx         <- which(nwords >= 1000)
+    idx         <- which(nwords >= 10000)
     if(length(idx) > 0){
-      message(sprintf("Note: there are texts which are longer than 1000 words, for these we will take only the first 1000 words, example doc_id: %s", x$doc_id[sample(idx, size = 1)]))
-      x$text[idx] <- sapply(strsplit(x$text[idx], split = "[ \t]"), FUN = function(x) paste(head(x, n = 1000), collapse = " "))    
+      message(sprintf("Note: there are texts which are longer than 10000 words, for these we will take only the first 1000 words, example doc_id: %s", x$doc_id[sample(idx, size = 1)]))
+      x$text[idx] <- sapply(strsplit(x$text[idx], split = "[ \t]"), FUN = function(x) paste(head(x, n = 10000), collapse = " "))    
     }
     idx <- grepl(x$doc_id, pattern = "[ \t]")
     idx <- which(idx)
