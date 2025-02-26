@@ -6,7 +6,7 @@ static int vocabCompare(const void *a, const void *b);
 static int getWordHash(const char *word);
 
 Vocabulary::Vocabulary(const char * train_file, int min_count, bool doctag) :
-  m_vocab(NULL), m_vocab_size(0), m_train_words(0), m_vocab_capacity(1000),
+  m_vocab(NULL), m_vocab_size(0), m_train_words(0), m_vocab_capacity(100000),
   m_vocab_hash(NULL), m_min_reduce(1), m_min_count(min_count), m_doctag(doctag)
 {
   if(m_doctag) m_min_count = 1;
